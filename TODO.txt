@@ -1,0 +1,31 @@
+dodać jak mi się będzie chciało:
+-profilowe
+-inne opcje logowania
+-opcje promocji nie tylko na hetmana
+-analiza gier
+-przycisk "poddaj się"
+-przycisk "remis?"
+
+
+
+kluczowe do naprawienia żeby można było powiedzieć że działa:
+-pgn musi być z backendu a nie z frontedu
+-co jest nie tak z cofaniem ruchów ogólnie sprawdzanie na backendzie coś tam jest nie tak
+-jak ktoś jest zalogowany w 2 przeglądarkach to sprawdzać czy nie jest już w kolejce albo w grze
+
+
+
+kosmetyczne rzeczy do zrobienia:
+-zła godzina w statystykach w bazie jest dobrze
+-sprawdzanie danych podczas rejestracji na backendzie
+-Overlay nie jest na cały ekran
+-chyba się lekko wypierdala wygląd na telefonach
+
+
+
+rzeczy które trzeba zrobić bo jak nie to się zaraz pogubię w tym kodzie i nie będzie dało się na niego patrzeć:
+-podzielić kod rust na więcej plików popakować w moduły
+-zrobić spójny css
+
+
+
