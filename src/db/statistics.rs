@@ -1,9 +1,9 @@
 use sqlx::MySqlPool;
 use chrono::Utc;
 
-use crate::models::{User, UserStatistics};
+use crate::models::models::{User, UserStatistics};
 use crate::db::users::get_user_by_email;
-use crate::game::{GameStatus, calculate_elo_changes};
+use crate::game::game::{GameStatus, calculate_elo_changes};
 
 pub async fn create_statistics_for_user(pool: &MySqlPool, elo:i32, email: &str) -> Result<bool, sqlx::Error> {
     let user: Option<User> = get_user_by_email(&pool, &email).await?;

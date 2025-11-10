@@ -1,8 +1,8 @@
 use sqlx::MySqlPool;
 use chrono::Utc;
 
-use crate::game::GameStatus;
-use crate::models::GameSummary;
+use crate::game::game::GameStatus;
+use crate::models::models::GameSummary;
 
 pub async fn create_game(pool: &MySqlPool, white_player_id: i32, black_player_id: i32, white_player_elo: i32, black_player_elo: i32) -> Result<i32, sqlx::Error> {
     let mut conn = pool.acquire().await?;

@@ -21,6 +21,7 @@ mod game;
 
 
 
+
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     dotenv().ok();
@@ -28,7 +29,7 @@ async fn main() -> std::io::Result<()> {
 
 
 
-    let game_state = web::Data::new(Arc::new(Mutex::new(game::GameState::default())));
+    let game_state = web::Data::new(Arc::new(Mutex::new(game::game::GameState::default())));
     let secret_key = Key::generate();
     let secret_key_data = web::Data::new(secret_key.clone());
     let flash_messages = FlashMessagesFramework::builder(CookieMessageStore::builder(secret_key).build())
@@ -57,17 +58,17 @@ async fn main() -> std::io::Result<()> {
             .app_data(web::Data::new(db_pool.clone()))
             .app_data(game_state.clone())
             .service(Files::new("/static", "./static").show_files_listing())
-            .service(routes::home_page)
-            .service(routes::play_page)
-            .service(ws::websocket_handler)
-            .service(routes::login_page)
-            .service(routes::login_handler)
-            .service(routes::register_page)
-            .service(routes::register_handler)
-            .service(routes::logout)
-            .service(routes::get_jwt)
-            .service(routes::games_page)
-            .service(routes::statistics_page)
+            .service(routes::pages::home_page)
+            .service(routes::pages::play_page)
+            .service(ws::ws::websocket_handler)
+            .service(routes::auth::login_page)
+            .service(routes::auth::login_handler)
+            .service(routes::auth::register_page)
+            .service(routes::auth::register_handler)
+            .service(routes::auth::logout)
+            .service(routes::auth::get_jwt)
+            .service(routes::pages::games_page)
+            .service(routes::pages::statistics_page)
     })
     .bind(format!("{}:{}", addr, port))?
     .run()

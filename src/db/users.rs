@@ -1,6 +1,6 @@
 use sqlx::MySqlPool;
 
-use crate::models::{User, RegisterUser, LoginUser};
+use crate::models::models::{User, RegisterUser, LoginUser};
 use crate::db::statistics::create_statistics_for_user;
 
 pub enum CreateUserError {
@@ -15,7 +15,7 @@ impl From<sqlx::Error> for CreateUserError {
     }
 }
 
-pub enum LoginUserError{
+pub enum LoginUserError {
     UserDoesNotExist,
     UserBanned,
     UserSuspended,

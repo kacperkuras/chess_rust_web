@@ -66,6 +66,7 @@ function hideOverlay() {
 
 
 
+
 chat_form.addEventListener('submit', (e) => {
     e.preventDefault();
     const input = document.getElementById('chatInput');
